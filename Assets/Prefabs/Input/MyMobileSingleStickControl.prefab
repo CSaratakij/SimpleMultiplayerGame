@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114717744151420290}
   - component: {fileID: 114372478242251708}
   m_Layer: 5
-  m_Name: JumpButton
+  m_Name: AttackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jump
+  m_Text: Shoot
 --- !u!114 &114372478242251708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bf3be603548374ca46f521a3aa7fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Jump
+  Name: Attack
 --- !u!114 &114451501247648972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementRange: 100
+  MovementRange: 70
   axesToUse: 0
   horizontalAxisName: Horizontal
   verticalAxisName: Vertical
@@ -419,7 +419,7 @@ RectTransform:
   m_AnchorMin: {x: 0.16000001, y: 0.2}
   m_AnchorMax: {x: 0.16000001, y: 0.2}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224732041425216462
 RectTransform:
