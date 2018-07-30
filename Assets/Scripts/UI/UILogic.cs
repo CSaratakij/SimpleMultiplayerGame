@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class UILogic : MonoBehaviour {
+namespace MVP.UI
+{
+    public class UILogic : MonoBehaviour
+    {
+        public void GameStart()
+        {
+            GameController.GameStart();
+        }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public void GameStop()
+        {
+            GameController.GameStop();
+        }
+
+        public void StartHost()
+        {
+            NetworkManager.singleton.networkAddress = "0.0.0.0";
+            NetworkManager.singleton.StartHost();
+        }
+
+        public void StopHost()
+        {
+            NetworkManager.singleton.StopHost();
+        }
+    }
 }

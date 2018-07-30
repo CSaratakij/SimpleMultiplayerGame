@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace MVP.UI
 {
@@ -9,7 +10,8 @@ namespace MVP.UI
         public enum View
         {
             MainMenu,
-            CreateGame
+            CreateGame,
+            InGameMenu
         }
 
         public static GameUIController instance = null;
@@ -26,6 +28,20 @@ namespace MVP.UI
             else {
                 Destroy(gameObject);
             }
+
+            _SubscribeEvents();
+        }
+
+        void Update()
+        {
+            if (Input.GetButtonDown("Cancel")) {
+                Toggle(View.InGameMenu);
+            }
+        }
+
+        void OnDestroy()
+        {
+            _UnsubscribeEvents();
         }
 
         void Start()
@@ -34,8 +50,50 @@ namespace MVP.UI
             Show(View.MainMenu);
         }
 
-        public void Show(View view) {
+        void _SubscribeEvents()
+        {
+            GameController.OnGameStart += _OnGameStart;
+            GameController.OnGameStop += _OnGameStop;
+        }
+
+        void _UnsubscribeEvents()
+        {
+            GameController.OnGameStart -= _OnGameStart;
+            GameController.OnGameStop -= _OnGameStop;
+        }
+
+        void _OnGameStart()
+        {
+            HideAllMenu();
+        }
+
+        void _OnGameStop()
+        {
+            HideAllMenu();
+            Show(View.MainMenu);
+        }
+
+        public void Show(View view)
+        {
             menu[(int)view].gameObject.SetActive(true);
+        }
+
+        public void Hide(View view)
+        {
+            menu[(int)view].gameObject.SetActive(false);
+        }
+
+        public void Toggle(View view)
+        {
+            var isActive = menu[(int)view].gameObject.activeSelf;
+            isActive = !isActive;
+
+            if (isActive) {
+                Show(view);
+            }
+            else {
+                Hide(view);
+            }
         }
 
         public void HideAllMenu()
