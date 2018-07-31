@@ -961,6 +961,7 @@ GameObject:
   - component: {fileID: 114000595853674436}
   - component: {fileID: 114883102462526942}
   - component: {fileID: 114825760422099922}
+  - component: {fileID: 114320796943120088}
   m_Layer: 0
   m_Name: MyThirdPersonController
   m_TagString: Untagged
@@ -2619,6 +2620,25 @@ MonoBehaviour:
     i15: 163
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114320796943120088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632718582246166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95840624267221522}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114523398967128648
 MonoBehaviour:
   m_ObjectHideFlags: 1
