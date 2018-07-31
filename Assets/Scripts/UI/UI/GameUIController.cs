@@ -34,6 +34,11 @@ namespace MVP.UI
 
         void Update()
         {
+            if (!GameController.IsGameStart) {
+                Hide(View.InGameMenu);
+                return;
+            }
+
             if (Input.GetButtonDown("Cancel")) {
                 Toggle(View.InGameMenu);
             }
@@ -70,7 +75,7 @@ namespace MVP.UI
         void _OnGameStop()
         {
             HideAllMenu();
-            Show(View.MainMenu);
+            Show(View.CreateGame);
         }
 
         public void Show(View view)

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
@@ -13,8 +11,22 @@ namespace MVP.UI
 
         public void JoinLanServer()
         {
+            var isNoAddress = string.IsNullOrEmpty(input.text);
+            if (isNoAddress) { return; }
+
             NetworkManager.singleton.networkAddress = input.text;
             NetworkManager.singleton.StartClient();
+
+            GameController.GameStart();
+        }
+
+        public void CreateLanServer()
+        {
+            NetworkManager.singleton.networkAddress = "0.0.0.0";
+            NetworkManager.singleton.StartHost();
+
+            GameController.GameStart();
+            MyNetworkDiscovery.singleton.BroadcastAsServer();
         }
     }
 }

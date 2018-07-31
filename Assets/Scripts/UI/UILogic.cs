@@ -1,31 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 
 namespace MVP.UI
 {
     public class UILogic : MonoBehaviour
     {
-        public void GameStart()
+        public static UILogic singleton = null;
+
+        void Awake()
         {
-            GameController.GameStart();
+            if (singleton == null) {
+                singleton = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else {
+                Destroy(gameObject);
+            }
         }
 
-        public void GameStop()
+        public void FindLocalServer()
         {
-            GameController.GameStop();
-        }
-
-        public void StartHost()
-        {
-            NetworkManager.singleton.networkAddress = "0.0.0.0";
-            NetworkManager.singleton.StartHost();
-        }
-
-        public void StopHost()
-        {
-            NetworkManager.singleton.StopHost();
+            MyNetworkDiscovery.singleton.FindLocalServer();
         }
     }
 }
